@@ -7,3 +7,13 @@
     @apply text-[18px] hover:text-accent;
   }
 }
+
+.image-width {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.carpet {
+  background-color: #f8f8f8;
+}

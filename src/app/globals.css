@@ -15,5 +15,22 @@
 }
 
 .carpet {
-  background-color: #f8f8f8;
+  background-color: #f1f3f9;
+}
+
+.border-apply {
+  border: 1px solid #f1f3f9;
+}
+
+.radius {
+  border-radius: 5px;
+}
+
+.radius-horiz {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.gate { 
+  border: 1px solid red;
 }

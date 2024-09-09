@@ -14,7 +14,7 @@ export interface IProduct {
   img: string;
   name: string;
   price: number;
-  category: string[];
+  category?: string[];
   sale?: boolean | undefined;
 }
 
@@ -111,17 +111,19 @@ const ProductCard = ({ id, img, name, price, sale}: IProduct) => {
 
   return (
     <div
-      className="cursor-pointer group carpet"
+      className="cursor-pointer group border-apply radius"
       onClick={() => router.push(`/details/${id}`)}
     >
       <div className="relative">
-        <Image
-          className="image-width"
-          src={img}
-          width={300}
-          height={300}
-          alt={name}
-        />
+        <div className="carpet flex justify-center radius-horiz">
+          <Image
+            className="image-width"
+            src={img}
+            width={300}
+            height={300}
+            alt={name}
+          />
+        </div>
 
         {sale && (
           <div className="bg-red-600 inline-block absolute top-0 left-0 text-[14px] text-white rounded-md px-2 py-[2px] m-4"

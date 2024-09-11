@@ -5,6 +5,7 @@ import { Whisper } from "next/font/google"
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import { IProduct } from "./ProductCard";
+import { shuffleArrayTwo } from "@/utils/utilities";
 
 const whisper = Whisper({ subsets: ["latin"], weight: ["400"] });
 
@@ -12,15 +13,8 @@ const NewArrival = () => {
   const [data, setData] = useState([]);
   const [selectedTab, setSelectedTab] = useState(0);
 
-  const shuffleArray = (array: any) => {
-    return array
-      .map((value: any) => ({ value, sort: Math.random() }))
-      .sort((a: any, b: any) => a.sort - b.sort)
-      .map(({ value }: any) => value);
-  }
-
   useEffect(() => {
-    setData(shuffleArray(Data).slice(0, 15));
+    setData(shuffleArrayTwo(Data).slice(0, 15));
   }, []);
 
   const tabsData = ["All", "Skin Care", "Lipsticks", "Makeup", "Nail & Wax"];
@@ -30,14 +24,14 @@ const NewArrival = () => {
     setSelectedTab(index);
 
     if (category === "all") {
-      setData(shuffleArray(Data).slice(0, 15));
+      setData(shuffleArrayTwo(Data).slice(0, 15));
       return;
     }
 
     const filteredData = Data.filter((item) =>
       item.category.includes(category)
     );
-    setData(shuffleArray(filteredData));
+    setData(shuffleArrayTwo(filteredData));
   }
 
   return (

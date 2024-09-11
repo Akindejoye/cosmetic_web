@@ -21,3 +21,5 @@ export const shuffleArrayTwo = (array: any): any => {
 
     return array;
   }
+
+  export const tabsData = ["All", "Skin Care", "Lipsticks", "Makeup", "Nail & Wax"];

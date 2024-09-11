@@ -5,7 +5,7 @@ import { Whisper } from "next/font/google"
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import { IProduct } from "./ProductCard";
-import { shuffleArrayTwo } from "@/utils/utilities";
+import { shuffleArrayTwo, tabsData } from "@/utils/utilities";
 
 const whisper = Whisper({ subsets: ["latin"], weight: ["400"] });
 
@@ -16,8 +16,6 @@ const NewArrival = () => {
   useEffect(() => {
     setData(shuffleArrayTwo(Data).slice(0, 15));
   }, []);
-
-  const tabsData = ["All", "Skin Care", "Lipsticks", "Makeup", "Nail & Wax"];
 
   const handleTab = (index: number) => {
     const category = tabsData[index].toLowerCase();

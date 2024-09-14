@@ -8,15 +8,7 @@ import {
   AiOutlineHeart,
   AiOutlineShoppingCart
 } from "react-icons/ai";
-
-export interface IProduct {
-  id: number;
-  img: string;
-  name: string;
-  price: number;
-  category?: string[];
-  sale?: boolean | undefined;
-}
+import { IProduct } from "@/utils/interface";
 
 const ProductCard = ({ id, img, name, price, sale}: IProduct) => {
   const dispatch = useAppDispatch();

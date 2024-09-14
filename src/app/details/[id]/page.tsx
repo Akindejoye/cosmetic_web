@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Data from '@/utils/productData';
 import { useParams } from "next/navigation";
-import { IProduct } from "@/components/ProductCard";
+import { IProduct } from "@/utils/interface";
 import Image from "next/image";
 import {
   AiFillStar,

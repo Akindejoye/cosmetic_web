@@ -8,7 +8,11 @@ interface IProduct {
   quantity: number;
 }
 
-const initialState: Array<IProduct> = [];
+// const initialState: Array<IProduct> = [];
+const storedState = localStorage.getItem("cosmetic");
+const initialState: Array<IProduct> =
+  storedState ? JSON.parse(storedState) : [];
+;
 
 export const cartSlice = createSlice({
   name: "cartSlice",
@@ -24,11 +28,15 @@ export const cartSlice = createSlice({
             : item;
         });
       }
+      localStorage.setItem('cosmetic', JSON.stringify(state));
     },
+
 
     removeFromCart: (state, action: PayloadAction<number>) => {
       const id = action.payload;
-      return state.filter((item) => item.id !== id);
+      const newState = state.filter((item) => item.id !== id);
+      localStorage.setItem('cosmetic', JSON.stringify(newState));
+      return newState;
     }
   },
 });

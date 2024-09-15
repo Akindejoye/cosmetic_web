@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Link from "next/link";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -5,7 +6,14 @@ import { useAppSelector } from "@/redux/hooks";
 
 const Navbar = ({ setShowCart}: any) => {
 
+  const [searchItem, setSearchItem] = useState('');
+
   const cartCount = useAppSelector((state) => state.cartReducer.length);
+
+  const handleSearchProduct = (e: any) => {
+    e.preventDefault();
+    console.log(searchItem);
+  }
 
   return ( 
     <div className="bg-white py-4 sticky top-0 z-10">
@@ -15,12 +23,17 @@ const Navbar = ({ setShowCart}: any) => {
           Logo
         </Link>
 
-        <ul className="gap-6 hidden sm:flex">
-          <Link href="/" className="navLink">Home</Link>
-          <li className="navLink">Shop</li>
-          <li className="navLink">Pages</li>
-          <li className="navLink">Contact</li>
-        </ul>
+        <form 
+          className="w-1/2 mx-auto"
+          onSubmit={handleSearchProduct}
+        >
+          <input
+            type="text"
+            placeholder="Search products..."
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            onChange={(e) => setSearchItem(e.target.value)}
+          />
+        </form>
 
         <div className="flex gap-6 text-[26px]">
           <div 

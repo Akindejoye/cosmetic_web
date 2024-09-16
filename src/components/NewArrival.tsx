@@ -9,13 +9,21 @@ import { shuffleArrayTwo, tabsData } from "@/utils/utilities";
 
 const whisper = Whisper({ subsets: ["latin"], weight: ["400"] });
 
-const NewArrival = () => {
+const NewArrival = ({ searchItem }) => {
   const [data, setData] = useState([]);
   const [selectedTab, setSelectedTab] = useState(0);
 
   useEffect(() => {
     setData(shuffleArrayTwo(Data).slice(0, 15));
   }, []);
+
+  useEffect(() => {
+    if (searchItem) {
+      console.log(searchItem);
+    } else {
+      console.log("No yet available data found");
+    }
+  }, [searchItem]);
 
   const handleTab = (index: number) => {
     const category = tabsData[index].toLowerCase();
@@ -30,6 +38,12 @@ const NewArrival = () => {
       item.category.includes(category)
     );
     setData(shuffleArrayTwo(filteredData));
+  }
+
+  if (searchItem) {
+    console.log(searchItem);
+  } else {
+    console.log("No yet available data found");
   }
 
   return (

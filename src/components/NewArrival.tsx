@@ -24,6 +24,7 @@ const NewArrival = ({ searchItem }: any) => {
       console.log("No yet available data found");
     }
   }, [searchItem]);
+  console.log(searchItem);
 
   const handleTab = (index: number) => {
     const category = tabsData[index].toLowerCase();

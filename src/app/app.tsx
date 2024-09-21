@@ -15,6 +15,7 @@ const App = ({ children }: { children: React.ReactNode}) => {
 
   const handleSearch = (e: any) => {
     setSearchItem(e.target.value);
+    // console.log(searchItem);
   }
 
   const handleSearchProduct = (e: any) => {

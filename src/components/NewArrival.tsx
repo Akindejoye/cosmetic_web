@@ -1,5 +1,6 @@
 "use client"
 
+import React from "react";
 import Data from "@/utils/productData";
 import { Whisper } from "next/font/google"
 import { useEffect, useState } from "react";
@@ -9,22 +10,15 @@ import { shuffleArrayTwo, tabsData } from "@/utils/utilities";
 
 const whisper = Whisper({ subsets: ["latin"], weight: ["400"] });
 
-const NewArrival = ({ searchItem }: any) => {
+const NewArrival = ({ searchItem }: { searchItem: string }) => {
   const [data, setData] = useState([]);
   const [selectedTab, setSelectedTab] = useState(0);
 
-  useEffect(() => {
-    setData(shuffleArrayTwo(Data).slice(0, 15));
-  }, []);
+  console.log(searchItem);
 
   useEffect(() => {
-    if (searchItem) {
-      console.log(searchItem);
-    } else {
-      console.log("No yet available data found");
-    }
+    setData(shuffleArrayTwo(Data).slice(0, 15));
   }, [searchItem]);
-  console.log(searchItem);
 
   const handleTab = (index: number) => {
     const category = tabsData[index].toLowerCase();
